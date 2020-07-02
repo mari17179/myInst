@@ -6,6 +6,10 @@ class User < ApplicationRecord
 
   attr_writer :login
 
+  validates :username, presence: true
+  validates :email, presence: true
+
+
   has_one_attached :user_photo
   after_commit :add_default_user_photo, on: %i[create update]
 
@@ -18,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def login
-    @login || self.username || self.email
+    @login || self.username
   end
 
   def self.find_for_database_authentication(warden_conditions)
