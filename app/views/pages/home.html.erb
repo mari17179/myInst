@@ -1,13 +1,21 @@
 <h1>Inst</h1>
 
 <% if current_user %>
-<h2><%= current_user.username %></h2>
-<%= link_to 'Sign out', destroy_user_session_path,
-    method: :delete %>
+  <h2><%= current_user.username %></h2>
+  <p> <%= image_tag(current_user.user_photo_thumbnail) %>
+  </p>
+  <p> <%= link_to 'Sign out', destroy_user_session_path,
+      method: :delete %>
+  </p>
+  <p>
+    <%= link_to "Edit Account", edit_user_registration_path %>
+  </p>
 
 <% else %>
 <h2>You should Sign In</h2>
-<%= link_to 'Sign up', new_user_registration_path %>
-<%= link_to 'Sign in', new_user_session_path %>
+  <p> <%= link_to 'Sign up', new_user_registration_path %>
+  </p>
+  <p> <%= link_to 'Sign in', new_user_session_path %>
+  </p>
 
 <% end %>
