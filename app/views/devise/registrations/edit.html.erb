@@ -1,51 +1,124 @@
-<h1><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" style="font-size:3vw" href="#">Inst</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+      <% if current_user %>
+
+      <ul class="navbar-nav ml-auto" style="font-size:1.5vw; color:white;">
+        <li class="nav-item">
+          <%= current_user.username %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+            <%= image_tag(current_user.user_photo_thumbnail) %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+           |
+        </li>
+        <li class="nav-item">
+          <%= link_to "Edit Account", edit_user_registration_path, {:style=>'color:white;', :class => "css_class"} %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+           |
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
+        </li>
+      </ul>
+
+      <% else %>
+
+      <ul class="navbar-nav ml-auto" style="font-size:2vw;">
+          <%= link_to 'Sign up', new_user_registration_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+           |
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log in', new_user_session_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+      </ul>
+
+      <% end %>
+
+    </div>
+  </div>
+</nav>
+
+<header class="masthead text-center text-white">
+    <div class="masthead-content">
+      <div class="container">
+
+<h1 style="font-size:3vw;"><%= t('.title', resource: resource_name.to_s.humanize) %></h1>
+
+<div style="font-size:2vw; margin-left:30px; margin-right:30px; margin-top:75px">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<div style="font-size:2vw; margin-left:30px; margin-right:30px">
   <%= bootstrap_devise_error_messages! %>
-
+</div>
   <div class="form-group">
-      <%= image_tag(resource.user_photo_thumbnail) if resource.user_photo.attached? %>
+      <%= image_tag(resource.user_photo_full_thumbnail) if resource.user_photo.attached? %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" style="margin-left:300px">
       <%= f.file_field (:user_photo) %>
-  </div>
-
-  <div class="form-group">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true, class: 'form-control' %>
-  </div>
+  </div> <br/>
 
 
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: 'email', class: 'form-control' %>
+      <%= f.label :username %><br/>
+      <%= f.text_field :username, {:style=>'size:25;', :class => "css_class"} %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.label :email %> <br/>
+    <%= f.email_field :email, {:style=>'size:25;', :class => "css_class"} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+    <%= f.label :password %> <br/>
+    <%= f.password_field :password, {:style=>'size:25;', :class => "css_class"} %>
+    <br/>
 
-    <small class="form-text text-muted"><%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
+    <small style="font-size:1.5vw; color:white;">
+      <%= t('.leave_blank_if_you_don_t_want_to_change_it') %></small>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
+    <%= f.label :password_confirmation %> <br/>
+    <%= f.password_field :password_confirmation, {:style=>'size:25;', :class => "css_class"}  %>
   </div>
 
   <div class="form-group">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+    <%= f.label :current_password %> <br/>
+    <%= f.password_field :current_password, {:style=>'size:25;', :class => "css_class"} %>
+    <br/>
 
-    <small class="form-text text-muted"><%= t('.we_need_your_current_password_to_confirm_your_changes') %></small>
+    <small style="font-size:1.5vw; color:white;">
+      <%= t('.we_need_your_current_password_to_confirm_your_changes') %>
+    </small>
   </div>
 
   <div class="form-group">
-    <%= f.submit t('.update'), class: 'btn btn-primary' %>
+    <%= f.submit t('.update'),{:style=>'size:25; color:black;', :class => "css_class"} %>
   </div>
 <% end %>
 
-<p><%= t('.unhappy') %>? <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
+<p> <%= t('.unhappy') %>? <br/>
+  <%= link_to t('.cancel_my_account'), registration_path(resource_name), data: { confirm: t('.are_you_sure') }, method: :delete %>.</p>
 
-<%= link_to t('.back'), :back %>
+<%= link_to t('.back'), :back ,{:style=>'size:25; color:black;', :class => "css_class"}%>
+</div>
+</div>
+</div>
+<div class="bg-circle-1 bg-circle"></div>
+<div class="bg-circle-2 bg-circle"></div>
+<div class="bg-circle-3 bg-circle"></div>
+<div class="bg-circle-4 bg-circle"></div>
+</header>

@@ -1,29 +1,55 @@
-<h1><%= t('.sign_in') %></h1>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" style="font-size:3vw" href="#">Inst</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav ml-auto" style="font-size:2vw;">
+          <%= link_to 'Sign up', new_user_registration_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+           |
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log in', new_user_session_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+
+<div style="font-size:2vw; margin-left:30px; margin-right:30px; margin-top:75px">
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
+<div style="margin-top:75px; font-size:2vw; margin-left:30px; margin-right:30px">
+  <%= bootstrap_devise_error_messages! %>
+</div>
   <div class="form-group">
-    <%= f.label :login %><br />
-    <%= f.text_field :login, autofocus: true, class: 'form-control' %>
+    <%= f.label :login %><br/>
+    <%= f.text_field :login,  {:style=>'size:25;', :class => "css_class"} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+    <%= f.label :password %> <br/>
+    <%= f.password_field :password,  {:style=>'size:25;', :class => "css_class"} %>
   </div>
 
   <% if devise_mapping.rememberable? %>
-    <div class="form-group form-check">
+    <div class="form-group form-check" style="font-size:1.5vw;"">
       <%= f.check_box :remember_me, class: 'form-check-input' %>
-      <%= f.label :remember_me, class: 'form-check-label' do %>
+      <%= f.label :remember_me,  {:style=>'margin-left:20px;', :class => "css_class"} do %>
         <%= resource.class.human_attribute_name('remember_me') %>
       <% end %>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= f.submit  t('.sign_in'), class: 'btn btn-primary' %>
+    <%= f.submit  t('.sign_in'), {:style=>'size:25;', :class => "css_class"} %>
   </div>
 <% end %>
-
-<%= render 'devise/shared/links' %>
+</div>

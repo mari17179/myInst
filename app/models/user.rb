@@ -36,7 +36,15 @@ class User < ApplicationRecord
 
    def user_photo_thumbnail
      if user_photo.attached?
-        user_photo.variant(resize: "150x150!").processed
+        user_photo.variant(resize: "30x30!").processed
+     else
+        '/default_user_photo.jpg'
+     end
+   end
+
+   def user_photo_full_thumbnail
+     if user_photo.attached?
+        user_photo.variant(resize: "200x200!").processed
      else
         '/default_user_photo.jpg'
      end

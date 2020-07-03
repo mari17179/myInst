@@ -1,36 +1,63 @@
-<h1><%= t('.sign_up') %></h1>
+
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" style="font-size:3vw" href="#">Inst</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav ml-auto" style="font-size:2vw;">
+          <%= link_to 'Sign up', new_user_registration_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+        <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+           |
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Log in', new_user_session_path, {:style=>'color:white;', :class => "css_class"}  %>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</nav>
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= bootstrap_devise_error_messages! %>
-
+  <div style="margin-top:75px; font-size:2vw; margin-left:30px; margin-right:30px">
+    <%= bootstrap_devise_error_messages! %>
+  </div>
+<div style="font-size:2vw; margin-left:30px; margin-right:30px; margin-top:75px">
   <div class="form-group">
-      <%= f.label :username %><br />
-      <%= f.text_field :username, autofocus: true, class: 'form-control' %>
+      <%= f.label :username %><br/>
+      <%= f.text_field :username, {:style=>'size:25;', :class => "css_class"} %>
     </div>
 
 
-  <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, autocomplete: 'email', class: 'form-control' %>
+  <div class="form-group" >
+    <%= f.label :email %> <br/>
+    <%= f.email_field :email, {:style=>'size:25;', :class => "css_class"} %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: 'current-password', class: 'form-control' %>
+    <%= f.label :password %> <br/>
+    <%= f.password_field :password, {:style=>'size:25;', :class => "css_class"}  %>
 
-    <% if @minimum_password_length %>
-      <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+    <% if @minimum_password_length %> <br/>
+      <small style="font-size:1vw;" class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
     <% end %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control' %>
+    <%= f.label :password_confirmation %> <br/>
+    <%= f.password_field :password_confirmation, {:style=>'size:25;', :class => "css_class"} %>
   </div>
 
-  <div class="form-group">
-    <%= f.submit t('.sign_up'), class: 'btn btn-primary' %>
+  <div class="form-group" >
+    <%= f.submit t('.sign_up'), {:style=>'size:25;', :class => "css_class"} %>
   </div>
 <% end %>
+</div>
 
-<%= render 'devise/shared/links' %>
+</div>
