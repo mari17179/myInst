@@ -1,0 +1,8 @@
+<div class="card-columns">
+  <% posts.each do |post| %>
+  <div class="card-body p-1">
+    <%= image_tag post.image, class: 'd-block w-100' %>
+    <%= link_to "View post", image_path(post.id), class: 'btn btn-secondary streteched-link' %>
+  </div>
+
+</div>

@@ -1,0 +1,23 @@
+<div class="row" style="font-size:2vw; margin-left:30px; margin-right:30px; margin-top:75px">
+  <div class="col-md-9">
+    <div class="card">
+      <div class="card-body p-2">
+          <%= image_tag @post.image, class: 'd-block w-100' if @post.image.attached? %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <%= link_to @post.user.username, profile_path(@post.user.username) %>
+
+    <p class="border-top mt-3 py-2">
+      <% if (@post.description.present?) %>
+        <%= @post.description %>
+      <% end %>
+      <span class="text-muted">
+          <%= time_ago_in_words @post.created_at %> ago
+      </span>
+    </p>
+  </div>
+
+</div>

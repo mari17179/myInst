@@ -21,6 +21,65 @@
   <body>
 
 
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+      <div class="container">
+        <a class="navbar-brand" style="font-size:3vw" href="#">Inst</a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <% if current_user %>
+
+
+          <ul class="navbar-nav ml-auto" style="font-size:1.5vw; color:white;">
+            <li class="nav-item" >
+              <%= link_to "NEW POST", newpost_path, {:style=>'color:white;', :class => "css_class"}%>
+            </li>
+            <li class="nav-item" style="margin-right:10px; margin-left:5px;">
+               |
+            </li>
+            <li class="nav-item">
+              <%= current_user.username %>
+            </li>
+            <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+                <%= image_tag(current_user.user_photo_thumbnail) %>
+            </li>
+            <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+               |
+            </li>
+
+            <li class="nav-item">
+              <%= link_to "Edit account", edit_user_registration_path, {:style=>'color:white;', :class => "css_class"} %>
+            </li>
+            <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+               |
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
+            </li>
+          </ul>
+
+          <% else %>
+
+          <ul class="navbar-nav ml-auto" style="font-size:2vw;">
+              <%= link_to 'Sign up', new_user_registration_path, {:style=>'color:white;', :class => "css_class"}  %>
+            </li>
+            <li class="nav-item" style="margin-right:5px; margin-left:5px;">
+               |
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Log in', new_user_session_path, {:style=>'color:white;', :class => "css_class"}  %>
+            </li>
+          </ul>
+
+          <% end %>
+
+        </div>
+      </div>
+    </nav>
+
     <%= bootstrap_flash %>
     <%= yield %>
 
