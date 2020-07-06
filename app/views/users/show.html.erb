@@ -37,7 +37,7 @@
 
                         <div class="card-box">
                             <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                              <%= Post.where(user: current_user).count %></h4>
+                              <%= Post.where(user: @user).count %></h4>
                             <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                                 Posts</p>
                         </div>

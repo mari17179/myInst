@@ -21,6 +21,10 @@
           <%= time_ago_in_words @post.created_at %> ago
       </span>
     </p>
+
+    <p class="border-top mt-3 py-2">
+      <%= render 'comments/form' %>
+    </p>
   </div>
 
 </div>
