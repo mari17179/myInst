@@ -1,14 +1,16 @@
-<div class="card-columns">
-  <% posts.each do |post| %>
-  <div class="card">
-   <div class="card-body p-1">
-    <%= image_tag post.image, class: 'd-block w-100' if post.image.attached? %>
-    <p class="my-1"><%= post.description %></p>
-    <%= link_to "View", post_path(post.id), class: 'btn btn-secondary'%>
-    <% if current_user.username == post.user.username %>
-    <%= link_to "Delete", post_path(post), :method => :delete, :data => { :confirm => "Are you sure?" },  class: 'btn btn-danger' %>
-    <% end %>
-   </div>
+<div style="font-size:2vw; margin-left:30px; margin-right:30px; margin-top:90px">
+  <div class="card-columns">
+    <% posts.each do |post| %>
+    <div class="card">
+     <div class="card-body p-1">
+      <%= image_tag post.image, class: 'd-block w-100' if post.image.attached? %>
+      <p class="my-1"><%= post.description %></p>
+      <%= link_to "View", post_path(post.id), class: 'btn btn-secondary'%>
+      <% if current_user.username == post.user.username %>
+      <%= button_to "Delete", post_path(post), :method => :delete, :data => { :confirm => "Are you sure?" },  class: 'btn btn-danger' %>
+      <% end %>
+     </div>
+    </div>
+   <% end %>
   </div>
- <% end %>
 </div>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   get '/newpost', to: 'posts#new'
-  resources :posts, only: [:index, :show, :create]
+  resources :posts, only: [:index, :show, :create, :destroy]
 
   get '/@:username', to: 'users#show', as: :profile
 
