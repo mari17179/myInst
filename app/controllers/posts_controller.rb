@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+  def index
+    @posts = Post.order(created_at: :desc).limit(15)
+  end
+
   def show
     @post = Post.find(params[:id])
   end
@@ -10,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to post_path(@post.id), notice: "Image uploaded successfully"
+      redirect_to @post, notice: "Image uploaded successfully"
     else
       render :new
     end
@@ -19,6 +23,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-      params.require(:post).permit(:post, :description)
+      params.require(:post).permit(:image, :description)
   end
 end
