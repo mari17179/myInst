@@ -1,3 +1,53 @@
-<h2><%= @user.username %></h2>
+<div style="font-size:2vw; margin-left:20px; margin-right:30px; margin-top:90px">
+
+
+  <section class="features4 counters cid-r7p52rqYmR visible" id="features4-6">
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-12">
+              <p class="mbr-section-sub-title pb-4 mbr-normal mbr-fonts-style display-4" style="width:200px;">
+                <%= image_tag @user.user_photo, class: 'd-block w-100' if @user.user_photo.attached? %>
+                <%= @user.username %>
+              </p>
+
+                <div class="media-container-row">
+                    <div class="card p-3 col-12 col-md-6 border-r col-lg-4">
+
+                        <div class="card-box">
+                            <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
+                              5942</h4>
+                            <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
+                              Following</p>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 col-12 col-md-6 border-r col-lg-4">
+
+                        <div class="card-box">
+                            <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
+                              33644</h4>
+                            <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
+                                Followers</p>
+                        </div>
+                    </div>
+
+                    <div class="card p-3 col-12 col-md-6 border-r col-lg-4">
+
+                        <div class="card-box">
+                            <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
+                              <%= Post.where(user: current_user).count %></h4>
+                            <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
+                                Posts</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <%= render 'shared/posts', posts: @posts %>
+</div>

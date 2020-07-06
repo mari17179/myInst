@@ -6,7 +6,7 @@
         <h2 class="masthead-subheading mb-0">Watch all new posts of your friends :)</h2>
         <h2 class="masthead-subheading mb-0">
           <% if current_user %>
-           <a>Watch!</a>
+           <%= link_to "WATCH!", posts_path, {:style=>'color:white;', :class => "css_class"} %>
           <% else %>
           <%= link_to 'Log in and watch!', new_user_session_path, {:style=>'color:white;', :class => "css_class"}  %> </h2>
           <% end %>

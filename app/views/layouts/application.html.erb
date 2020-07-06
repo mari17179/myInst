@@ -34,16 +34,12 @@
 
           <% if current_user %>
 
-
           <ul class="navbar-nav ml-auto" style="font-size:1.5vw; color:white;">
-            <li class="nav-item" >
-              <%= link_to "NEW POST", newpost_path, {:style=>'color:white;', :class => "css_class"}%>
-            </li>
-            <li class="nav-item" style="margin-right:10px; margin-left:5px;">
-               |
+            <li class="nav-item" style="color:black;margin-right:20px;" >
+              <%= link_to "NEW POST", newpost_path, {:style=>'color:white;', :class => "css_class"} %>
             </li>
             <li class="nav-item">
-              <%= link_to current_user.username, profile_path(current_user.username) %>
+              <%= link_to current_user.username, profile_path(current_user.username), {:style=>'color:white;', :class => "css_class"} %>
             </li>
             <li class="nav-item" style="margin-right:5px; margin-left:5px;">
                 <%= image_tag(current_user.user_photo_thumbnail) %>
@@ -55,11 +51,8 @@
             <li class="nav-item">
               <%= link_to "Edit account", edit_user_registration_path, {:style=>'color:white;', :class => "css_class"} %>
             </li>
-            <li class="nav-item" style="margin-right:5px; margin-left:5px;">
-               |
-            </li>
-            <li class="nav-item">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete  %>
+            <li class="nav-item" style="color:black;margin-left:20px;">
+              <%= button_to 'Sign out', destroy_user_session_path, method: :delete  %>
             </li>
           </ul>
 
