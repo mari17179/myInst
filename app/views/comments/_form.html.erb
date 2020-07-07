@@ -1,7 +1,9 @@
 <%= form_for ([@post, @comment]) do |f|  %>
-
-  <%= f.text_field :comment %>
-
-  <%= f.submit "Add comment" %>
+  <p style="font-size:1.5vw;margin:5px;">
+    <%= f.text_field :comment %>
+  </p>
+  <p style="font-size:1.5vw;margin:5px;">
+    <%= f.submit "Add comment" %>
+  </p>
 
 <% end %>

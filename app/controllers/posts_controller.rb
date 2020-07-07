@@ -25,13 +25,13 @@ class PostsController < ApplicationController
 
   def destroy
    @post = Post.find(params[:id])
+   @comments = @post.comments.where(post_id: @post.id)
+   @comments.each do |comment|
+     comment.destroy
+   end
    @post.destroy
-
-   respond_to do |format|
-     format.html { redirect_to posts_url }
-     format.json { head :no_content }
+   redirect_to  profile_path(@post.user.username)
   end
-end
 
   private
 
