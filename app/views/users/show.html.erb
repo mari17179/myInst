@@ -28,7 +28,7 @@
 
                         <div class="card-box">
                             <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                              5942</h4>
+                              <%= Follow.where(follower_id: @user.id).count %></h4>
                             <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                               Following</p>
                         </div>
@@ -38,7 +38,7 @@
 
                         <div class="card-box">
                             <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                              33644</h4>
+                              <%= Follow.where(following_id: @user.id).count %></h4>
                             <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                                 Followers</p>
                         </div>
