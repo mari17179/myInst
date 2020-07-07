@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:index, :show, :create, :destroy]
   end
 
+  resource :follows, only: [:create, :destroy]
+
   get '/@:username', to: 'users#show', as: :profile
 
 

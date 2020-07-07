@@ -6,11 +6,22 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-12">
+            <div class="col-lg-9">
               <p class="mbr-section-sub-title pb-4 mbr-normal mbr-fonts-style display-4" style="width:200px;">
                 <%= image_tag @user.user_photo, class: 'd-block w-100' if @user.user_photo.attached? %>
                 <%= @user.username %>
               </p>
+              <% if user_signed_in? && current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <p style="width:200px;">
+                    <%= button_to "Unfollow", follows_path(user_id: @user.id), method: :delete %>
+                  </p>
+                <% else %>
+                <p style="width:200px;">
+                  <%= button_to "Follow", follows_path(user_id: @user.id) %>
+                </p>
+                <% end %>
+              <% end %>
 
                 <div class="media-container-row">
                     <div class="card p-3 col-12 col-md-6 border-r col-lg-4">

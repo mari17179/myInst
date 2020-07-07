@@ -8,6 +8,29 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :passive_follows, class_name: "Follow",
+                             foreign_key: "following_id",
+                             dependent: :destroy
+
+  has_many :followers, through: :passive_follows, source: :follower
+
+  has_many :active_follows, class_name: "Follow",
+                            foreign_key: "follower_id",
+                            dependent: :destroy
+
+  has_many :followings, through: :active_follows, source: :following
+
+  def follow(user_to_follow)
+    active_follows.create(following_id: user_to_follow.id)
+  end
+
+  def unfollow(user_to_unfollow)
+    active_follows.find_by(following_id: user_to_unfollow.id).destroy
+  end
+
+  def following?(other_user)
+    following_ids.include?(other_user.id)
+  end
 
   validates :username, presence: true
   validates :email, presence: true
