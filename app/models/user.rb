@@ -7,6 +7,7 @@ class User < ApplicationRecord
   attr_writer :login
 
   has_many :posts
+  has_many :comments
 
   validates :username, presence: true
   validates :email, presence: true

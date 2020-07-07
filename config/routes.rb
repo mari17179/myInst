@@ -8,6 +8,10 @@ Rails.application.routes.draw do
 
   get '/newpost', to: 'posts#new'
   resources :posts, only: [:index, :show, :create, :destroy]
+  resources :comments, only: [:index, :show, :create, :destroy]
+  resources :posts do
+    resources :comments, only: [:index, :show, :create, :destroy]
+  end
 
   get '/@:username', to: 'users#show', as: :profile
 
