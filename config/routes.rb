@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
+    post '/users/edit' => 'devise/registrations#edit'
   end
 
   get '/newpost', to: 'posts#new'
@@ -14,8 +15,11 @@ Rails.application.routes.draw do
   end
 
   resource :follows, only: [:create, :destroy]
+  resource :followings, only: [:create, :destroy]
 
   get '/@:username', to: 'users#show', as: :profile
+  get '/followings.:username', to: 'users#followings'
+  get '/follows.:username', to: 'users#followers'
 
 
 end
