@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/@:username', to: 'users#show', as: :profile
   get '/followings.:username', to: 'users#followings'
   get '/follows.:username', to: 'users#followers'
+  get '/likes.:post_id', to: 'posts#likes'
 
 
 end

@@ -26,7 +26,12 @@
     <% end %>
 
     <p class="border-top mt-3 py-2">
-      <a> ?? users like this post </a>
+      <%= Like.where(post_id: @post.id).count %>
+      <% if Like.where(post_id: @post.id).count == 0 %>
+        user(s) like this post
+      <% else %>
+        <%= link_to " user(s) like this post", likes_path(@post.id) %>
+      <% end %>
     </p>
 
     <p class="border-top mt-3 py-2">

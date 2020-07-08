@@ -33,6 +33,12 @@ class PostsController < ApplicationController
    redirect_to  profile_path(@post.user.username)
   end
 
+  def likes
+    @post = Post.find(params[:post_id])
+    @userslikes = Like.where(post_id: @post.id)
+  end
+
+
   private
 
   def post_params

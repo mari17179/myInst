@@ -1,0 +1,18 @@
+<% @userslikes.each do |like| %>
+<% @user = User.find(like.user_id) %>
+  <p class="border-top mt-2 py-2" style="font-size:1.5vw;">
+    <%= image_tag(@user.user_photo_follow_thumbnail) %>
+    <%= link_to @user.username, profile_path(@user.username) %>
+    <% if user_signed_in? && current_user != @user %>
+      <% if current_user.following?(@user) %>
+        <p style="width:200px;">
+          <%= button_to "Unfollow", follows_path(user_id: @user.id), method: :delete %>
+        </p>
+      <% else %>
+      <p style="width:200px;">
+        <%= button_to "Follow", follows_path(user_id: @user.id) %>
+      </p>
+      <% end %>
+  <% end %>
+
+<% end %>
