@@ -13,6 +13,22 @@
       <%= button_to "DELETE POST", post_path(@post), :method => :delete, :data => { :confirm => "Are you sure?" },  class: 'btn btn-danger' %>
     <% end %>
 
+    <% if user_signed_in? %>
+      <% if current_user.likes?(@post) %>
+        <p>
+          <%= button_to "Dislike", likes_path(post_id: @post.id), method: :delete  %>
+        </p>
+      <% else %>
+        <p>
+          <%= button_to "Like", likes_path(post_id: @post.id) %>
+        </p>
+      <% end %>
+    <% end %>
+
+    <p class="border-top mt-3 py-2">
+      <a> ?? users like this post </a>
+    </p>
+
     <p class="border-top mt-3 py-2">
       <% if (@post.description.present?) %>
         <%= @post.description %> <br/>

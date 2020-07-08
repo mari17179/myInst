@@ -20,6 +20,8 @@ class User < ApplicationRecord
 
   has_many :followings, through: :active_follows, source: :following
 
+  has_many :likes
+
   def follow(user_to_follow)
     active_follows.create(following_id: user_to_follow.id)
   end
@@ -30,6 +32,18 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following_ids.include?(other_user.id)
+  end
+
+  def likes?(post)
+    Like.find_by(user_id: self.id, post_id: post.id)
+  end
+
+  def like(post)
+    Like.create(user_id: self.id, post_id: post.id)
+  end
+
+  def dislike(post)
+    Like.find_by(user_id: self.id, post_id: post.id).destroy
   end
 
   validates :username, presence: true

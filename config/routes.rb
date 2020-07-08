@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resource :follows, only: [:create, :destroy]
   resource :followings, only: [:create, :destroy]
+  resource :likes, only: [:create, :destroy]
 
   get '/@:username', to: 'users#show', as: :profile
   get '/followings.:username', to: 'users#followings'
