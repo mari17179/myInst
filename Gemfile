@@ -7,7 +7,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'jquery-rails'
-gem 'bootstrap-sass', '~> 3.3.0'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 
 
