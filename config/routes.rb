@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
     post '/users/edit' => 'devise/registrations#edit'
+  #  delete "/users/:id" => "users#destroy", as: :user
   end
 
   get '/newpost', to: 'posts#new'

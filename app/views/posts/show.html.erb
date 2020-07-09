@@ -9,8 +9,8 @@
 
   <div class="col-md-3">
     <%= link_to @post.user.username, profile_path(@post.user.username) %>
-    <% if current_user == @post.user %>
-      <%= button_to "DELETE POST", post_path(@post), :method => :delete, :data => { :confirm => "Are you sure?" },  class: 'btn btn-danger' %>
+    <% if user_signed_in? && current_user == @post.user %>
+      <%= button_to "DELETE POST", post_path(@post), :method => :delete,  class: 'btn btn-danger' %>
     <% end %>
 
     <% if user_signed_in? %>
