@@ -30,8 +30,8 @@
 
                         <div class="card-box">
                             <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                              <%= Follow.where(follower_id: @user.id).count %></h4>
-                              <% if Follow.where(follower_id: @user.id).count == 0 %>
+                              <%= @user.followingNumber %></h4>
+                              <% if @user.followingNumber == 0 %>
                               <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                                   Following</p>
                               <% else %>
@@ -46,9 +46,9 @@
 
                         <div class="card-box">
                           <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                            <%= Follow.where(following_id: @user.id).count %>
+                            <%= @user.followersNumber %>
                           </h4>
-                          <% if Follow.where(following_id: @user.id).count == 0 %>
+                          <% if @user.followersNumber == 0 %>
                           <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                               Followers</p>
                           <% else %>
@@ -63,7 +63,7 @@
 
                         <div class="card-box">
                             <h4 style="font-size:2vw;" class="count card-title mbr-fonts-style mbr-white mbr-normal align-center display-1">
-                              <%= Post.where(user: @user).count %></h4>
+                              <%= @user.postsNumber %></h4>
                             <p style="font-size:2vw;" class="mbr-text mbr-fonts-style mbr-white mbr-normal align-center display-4">
                                 Posts</p>
                         </div>

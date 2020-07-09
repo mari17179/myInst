@@ -34,6 +34,18 @@ class User < ApplicationRecord
     following_ids.include?(other_user.id)
   end
 
+  def followersNumber
+    Follow.where(following_id: self.id).count
+  end
+
+  def followingNumber
+    Follow.where(follower_id: self.id).count
+  end
+
+  def postsNumber
+    Post.where(user_id: self.id).count
+  end
+
   def likes?(post)
     Like.find_by(user_id: self.id, post_id: post.id)
   end
