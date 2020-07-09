@@ -41,6 +41,16 @@
           null,
           1,
           1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
           null,
           null,
           null,
@@ -646,7 +656,7 @@
           null
         ]
       },
-      "/home/maria/Documents/Inst/inst/spec/factories/users.rb": {
+      "/home/maria/Documents/Inst/inst/spec/factories/comment.rb": {
         "lines": [
           1,
           1,
@@ -654,6 +664,43 @@
           1,
           1,
           1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/maria/Documents/Inst/inst/spec/factories/like.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/maria/Documents/Inst/inst/spec/factories/post.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/maria/Documents/Inst/inst/spec/factories/users.rb": {
+        "lines": [
+          1,
+          1,
+          11,
+          11,
+          11,
+          11,
           null,
           null
         ]
@@ -703,15 +750,15 @@
           1,
           1,
           null,
-          null,
-          null,
-          1,
-          null,
           1,
           null,
           null,
           null,
           1,
+          null,
+          1,
+          null,
+          null,
           null,
           1,
           null,
@@ -761,7 +808,7 @@
           1,
           null,
           1,
-          41,
+          37,
           0,
           null,
           null,
@@ -805,8 +852,8 @@
           null,
           1,
           1,
-          36,
-          18,
+          32,
+          16,
           null,
           null,
           null,
@@ -836,6 +883,13 @@
       },
       "/home/maria/Documents/Inst/inst/app/helpers/pages_helper.rb": {
         "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/maria/Documents/Inst/inst/spec/support/factory_bot.rb": {
+        "lines": [
+          1,
           1,
           null
         ]
@@ -986,42 +1040,21 @@
           1,
           null,
           1,
-          1,
-          1,
-          1,
-          1,
+          11,
           null,
+          2,
+          2,
+          2,
           null,
-          1,
-          1,
-          1,
+          2,
+          2,
+          2,
           null,
+          2,
+          2,
           null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          null,
+          2,
+          2,
           null,
           null
         ]
@@ -1044,6 +1077,6 @@
         ]
       }
     },
-    "timestamp": 1594316362
+    "timestamp": 1594321612
   }
 }

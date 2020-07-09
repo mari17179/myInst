@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :likes
+  
   has_many :passive_follows, class_name: "Follow",
                              foreign_key: "following_id",
                              dependent: :destroy
@@ -19,8 +21,6 @@ class User < ApplicationRecord
                             dependent: :destroy
 
   has_many :followings, through: :active_follows, source: :following
-
-  has_many :likes
 
   def follow(user_to_follow)
     active_follows.create(following_id: user_to_follow.id)
