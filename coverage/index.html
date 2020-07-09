@@ -14,7 +14,7 @@
       <img src="./assets/0.12.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-07-08T17:41:56+03:00">2020-07-08T17:41:56+03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-07-09T20:39:22+03:00">2020-07-09T20:39:22+03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="yellow">
-  89.58%
+  88.93%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.25
+         1.23
        </span>
     </span> hits/line
     )
@@ -39,15 +39,15 @@
   <a name="AllFiles"></a>
 
   <div>
-    <b>30</b> files in total.
+    <b>31</b> files in total.
   </div>
 
   <div class="t-line-summary">
-    <b>259</b> relevant lines,
-    <span class="green"><b>232</b> lines covered</span> and
-    <span class="red"><b>27</b> lines missed. </span>
+    <b>271</b> relevant lines,
+    <span class="green"><b>241</b> lines covered</span> and
+    <span class="red"><b>30</b> lines missed. </span>
     (<span class="yellow">
-  89.58%
+  88.93%
 </span>
 )
   </div>
@@ -160,12 +160,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#44fbcef71ff5006418d5dbb67d640d9b5e869b06" class="src_link" title="app/models/user.rb">app/models/user.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">59.26 %</td>
-            <td class="cell--number">116</td>
-            <td class="cell--number">54</td>
-            <td class="cell--number">32</td>
-            <td class="cell--number">22</td>
-            <td class="cell--number">2.30</td>
+            <td class="red strong cell--number t-file__coverage">58.33 %</td>
+            <td class="cell--number">128</td>
+            <td class="cell--number">60</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">25</td>
+            <td class="cell--number">2.12</td>
             
           </tr>
         
@@ -329,6 +329,17 @@
             <td class="cell--number">27</td>
             <td class="cell--number">18</td>
             <td class="cell--number">18</td>
+            <td class="cell--number">0</td>
+            <td class="cell--number">1.00</td>
+            
+          </tr>
+        
+          <tr class="t-file">
+            <td class="strong t-file__name"><a href="#57913605776a2ccda20ca15aff8f1645fff95748" class="src_link" title="spec/factories/users.rb">spec/factories/users.rb</a></td>
+            <td class="green strong cell--number t-file__coverage">100.00 %</td>
+            <td class="cell--number">8</td>
+            <td class="cell--number">6</td>
+            <td class="cell--number">6</td>
             <td class="cell--number">0</td>
             <td class="cell--number">1.00</td>
             
@@ -1198,7 +1209,7 @@
     <h3>app/models/user.rb</h3>
     <h4>
       <span class="red">
-  59.26%
+  58.33%
 </span>
 
       lines covered
@@ -1207,9 +1218,9 @@
     
 
     <div class="t-line-summary">
-      <b>54</b> relevant lines.
-      <span class="green"><b>32</b> lines covered</span> and
-      <span class="red"><b>22</b> lines missed.</span>
+      <b>60</b> relevant lines.
+      <span class="green"><b>35</b> lines covered</span> and
+      <span class="red"><b>25</b> lines missed.</span>
     </div>
 
     
@@ -1622,7 +1633,7 @@
 
             
 
-            <code class="ruby">  def likes?(post)</code>
+            <code class="ruby">  def followersNumber</code>
           </li>
         </div>
       
@@ -1633,7 +1644,7 @@
 
             
 
-            <code class="ruby">    Like.find_by(user_id: self.id, post_id: post.id)</code>
+            <code class="ruby">    Follow.where(following_id: self.id).count</code>
           </li>
         </div>
       
@@ -1666,7 +1677,7 @@
 
             
 
-            <code class="ruby">  def like(post)</code>
+            <code class="ruby">  def followingNumber</code>
           </li>
         </div>
       
@@ -1677,7 +1688,7 @@
 
             
 
-            <code class="ruby">    Like.create(user_id: self.id, post_id: post.id)</code>
+            <code class="ruby">    Follow.where(follower_id: self.id).count</code>
           </li>
         </div>
       
@@ -1710,7 +1721,7 @@
 
             
 
-            <code class="ruby">  def dislike(post)</code>
+            <code class="ruby">  def postsNumber</code>
           </li>
         </div>
       
@@ -1721,7 +1732,7 @@
 
             
 
-            <code class="ruby">    Like.find_by(user_id: self.id, post_id: post.id).destroy</code>
+            <code class="ruby">    Post.where(user_id: self.id).count</code>
           </li>
         </div>
       
@@ -1754,18 +1765,18 @@
 
             
 
-            <code class="ruby">  validates :username, presence: true</code>
+            <code class="ruby">  def likes?(post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="50">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="50">
+            
             
 
             
 
-            <code class="ruby">  validates :email, presence: true</code>
+            <code class="ruby">    Like.find_by(user_id: self.id, post_id: post.id)</code>
           </li>
         </div>
       
@@ -1776,7 +1787,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -1798,18 +1809,18 @@
 
             
 
-            <code class="ruby">  has_one_attached :user_photo</code>
+            <code class="ruby">  def like(post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="54">
+            
             
 
             
 
-            <code class="ruby">  after_commit :add_default_user_photo, on: %i[create update]</code>
+            <code class="ruby">    Like.create(user_id: self.id, post_id: post.id)</code>
           </li>
         </div>
       
@@ -1820,23 +1831,12 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="56">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  validate :validate_username</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="57">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -1847,57 +1847,68 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="58">
+          <li class="covered" data-hits="1" data-linenumber="57">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def validate_username</code>
+            <code class="ruby">  def dislike(post)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="41" data-linenumber="59">
-            <span class="hits">41</span>
+          <li class="missed" data-hits="0" data-linenumber="58">
+            
             
 
             
 
-            <code class="ruby">    if User.where(email: username).exists?</code>
+            <code class="ruby">    Like.find_by(user_id: self.id, post_id: post.id).destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="60">
-            
-            
-
-            
-
-            <code class="ruby">      errors.add(:username, :invalid)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="61">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="62">
+          <li class="never" data-hits="" data-linenumber="59">
             
             
 
             
 
             <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :username, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="62">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :email, presence: true</code>
           </li>
         </div>
       
@@ -1913,35 +1924,35 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
+          <li class="never" data-hits="" data-linenumber="64">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="65">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def login</code>
+            <code class="ruby">  has_one_attached :user_photo</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">    @login || self.username</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  end</code>
+            <code class="ruby">  after_commit :add_default_user_photo, on: %i[create update]</code>
           </li>
         </div>
       
@@ -1963,40 +1974,40 @@
 
             
 
-            <code class="ruby">  def self.find_for_database_authentication(warden_conditions)</code>
+            <code class="ruby">  validate :validate_username</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="69">
+          <li class="never" data-hits="" data-linenumber="69">
             
             
 
             
 
-            <code class="ruby">     conditions = warden_conditions.dup</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="70">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="70">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">     if login = conditions.delete(:login)</code>
+            
+
+            <code class="ruby">  def validate_username</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="71">
-            
-            
-
+          <li class="covered" data-hits="41" data-linenumber="71">
+            <span class="hits">41</span>
             
 
-            <code class="ruby">       where(conditions.to_h).where([&quot;lower(username) = :value OR lower(email) = :value&quot;, { :value =&gt; login.downcase }]).first</code>
+            
+
+            <code class="ruby">    if User.where(email: username).exists?</code>
           </li>
         </div>
       
@@ -2007,18 +2018,18 @@
 
             
 
-            <code class="ruby">     elsif conditions.has_key?(:username) || conditions.has_key?(:email)</code>
+            <code class="ruby">      errors.add(:username, :invalid)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="73">
+          <li class="never" data-hits="" data-linenumber="73">
             
             
 
             
 
-            <code class="ruby">       where(conditions.to_h).first</code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
@@ -2029,7 +2040,7 @@
 
             
 
-            <code class="ruby">     end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -2040,12 +2051,45 @@
 
             
 
-            <code class="ruby">   end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="76">
+          <li class="covered" data-hits="1" data-linenumber="76">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def login</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby">    @login || self.username</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="79">
             
             
 
@@ -2056,46 +2100,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="77">
+          <li class="covered" data-hits="1" data-linenumber="80">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">   def user_photo_thumbnail</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="78">
-            
-            
-
-            
-
-            <code class="ruby">     if user_photo.attached?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="79">
-            
-            
-
-            
-
-            <code class="ruby">        user_photo.variant(resize: &quot;30x30!&quot;).processed</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="80">
-            
-            
-
-            
-
-            <code class="ruby">     else</code>
+            <code class="ruby">  def self.find_for_database_authentication(warden_conditions)</code>
           </li>
         </div>
       
@@ -2106,12 +2117,56 @@
 
             
 
-            <code class="ruby">        &#39;/default_user_photo.jpg&#39;</code>
+            <code class="ruby">     conditions = warden_conditions.dup</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="82">
+          <li class="missed" data-hits="0" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">     if login = conditions.delete(:login)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby">       where(conditions.to_h).where([&quot;lower(username) = :value OR lower(email) = :value&quot;, { :value =&gt; login.downcase }]).first</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="84">
+            
+            
+
+            
+
+            <code class="ruby">     elsif conditions.has_key?(:username) || conditions.has_key?(:email)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby">       where(conditions.to_h).first</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
             
             
 
@@ -2122,57 +2177,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="83">
+          <li class="never" data-hits="" data-linenumber="87">
             
             
 
             
 
             <code class="ruby">   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="84">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="85">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">   def user_photo_follow_thumbnail</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="86">
-            
-            
-
-            
-
-            <code class="ruby">     if user_photo.attached?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="87">
-            
-            
-
-            
-
-            <code class="ruby">        user_photo.variant(resize: &quot;60x60!&quot;).processed</code>
           </li>
         </div>
       
@@ -2183,67 +2194,23 @@
 
             
 
-            <code class="ruby">     else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="89">
-            
-            
-
-            
-
-            <code class="ruby">        &#39;/default_user_photo.jpg&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="90">
-            
-            
-
-            
-
-            <code class="ruby">     end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="91">
-            
-            
-
-            
-
-            <code class="ruby">   end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="92">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="93">
+          <li class="covered" data-hits="1" data-linenumber="89">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">   def user_photo_full_thumbnail</code>
+            <code class="ruby">   def user_photo_thumbnail</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="94">
+          <li class="missed" data-hits="0" data-linenumber="90">
             
             
 
@@ -2254,18 +2221,18 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="95">
+          <li class="missed" data-hits="0" data-linenumber="91">
             
             
 
             
 
-            <code class="ruby">        user_photo.variant(resize: &quot;200x200!&quot;).processed</code>
+            <code class="ruby">        user_photo.variant(resize: &quot;30x30!&quot;).processed</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="96">
+          <li class="never" data-hits="" data-linenumber="92">
             
             
 
@@ -2276,7 +2243,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="97">
+          <li class="missed" data-hits="0" data-linenumber="93">
             
             
 
@@ -2287,7 +2254,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="98">
+          <li class="never" data-hits="" data-linenumber="94">
             
             
 
@@ -2298,13 +2265,57 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="99">
+          <li class="never" data-hits="" data-linenumber="95">
             
             
 
             
 
             <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="96">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="97">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def user_photo_follow_thumbnail</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="98">
+            
+            
+
+            
+
+            <code class="ruby">     if user_photo.attached?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="99">
+            
+            
+
+            
+
+            <code class="ruby">        user_photo.variant(resize: &quot;60x60!&quot;).processed</code>
           </li>
         </div>
       
@@ -2315,155 +2326,34 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">     else</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="101">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="101">
+            
             
 
             
 
-            <code class="ruby">   private</code>
+            <code class="ruby">        &#39;/default_user_photo.jpg&#39;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="102">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="102">
+            
             
 
             
 
-            <code class="ruby">   def add_default_user_photo</code>
+            <code class="ruby">     end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="36" data-linenumber="103">
-            <span class="hits">36</span>
-            
-
-            
-
-            <code class="ruby">      unless user_photo.attached?</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="18" data-linenumber="104">
-            <span class="hits">18</span>
-            
-
-            
-
-            <code class="ruby">        user_photo.attach(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="105">
-            
-            
-
-            
-
-            <code class="ruby">          io: File.open(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="106">
-            
-            
-
-            
-
-            <code class="ruby">            Rails.root.join(</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="107">
-            
-            
-
-            
-
-            <code class="ruby">              &#39;app&#39;, &#39;assets&#39;, &#39;images&#39;, &#39;default_user_photo.jpg&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="108">
-            
-            
-
-            
-
-            <code class="ruby">            )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="109">
-            
-            
-
-            
-
-            <code class="ruby">          ),</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="110">
-            
-            
-
-            
-
-            <code class="ruby">          filename: &#39;default_user_photo.jpg&#39;,</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="111">
-            
-            
-
-            
-
-            <code class="ruby">          content_type: &#39;image/jpg&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="112">
-            
-            
-
-            
-
-            <code class="ruby">        )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="113">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="114">
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
@@ -2474,7 +2364,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="115">
+          <li class="never" data-hits="" data-linenumber="104">
             
             
 
@@ -2485,7 +2375,260 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="116">
+          <li class="covered" data-hits="1" data-linenumber="105">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def user_photo_full_thumbnail</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="106">
+            
+            
+
+            
+
+            <code class="ruby">     if user_photo.attached?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="107">
+            
+            
+
+            
+
+            <code class="ruby">        user_photo.variant(resize: &quot;200x200!&quot;).processed</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+            
+
+            
+
+            <code class="ruby">     else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby">        &#39;/default_user_photo.jpg&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby">     end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="111">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="113">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   private</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="114">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">   def add_default_user_photo</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="36" data-linenumber="115">
+            <span class="hits">36</span>
+            
+
+            
+
+            <code class="ruby">      unless user_photo.attached?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="18" data-linenumber="116">
+            <span class="hits">18</span>
+            
+
+            
+
+            <code class="ruby">        user_photo.attach(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+            
+
+            
+
+            <code class="ruby">          io: File.open(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">            Rails.root.join(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby">              &#39;app&#39;, &#39;assets&#39;, &#39;images&#39;, &#39;default_user_photo.jpg&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
+            
+            
+
+            
+
+            <code class="ruby">            )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby">          ),</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="122">
+            
+            
+
+            
+
+            <code class="ruby">          filename: &#39;default_user_photo.jpg&#39;,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">          content_type: &#39;image/jpg&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby">        )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="125">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="126">
+            
+            
+
+            
+
+            <code class="ruby">   end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="127">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="128">
             
             
 
@@ -8638,6 +8781,125 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">end</code>
+          </li>
+        </div>
+      
+    </ol>
+  </pre>
+</div>
+
+      
+        <div class="source_table" id="57913605776a2ccda20ca15aff8f1645fff95748">
+  <div class="header">
+    <h3>spec/factories/users.rb</h3>
+    <h4>
+      <span class="green">
+  100.0%
+</span>
+
+      lines covered
+    </h4>
+
+    
+
+    <div class="t-line-summary">
+      <b>6</b> relevant lines.
+      <span class="green"><b>6</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
+    </div>
+
+    
+
+  </div>
+
+  <pre>
+    <ol>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="1">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">FactoryBot.define do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="2">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  factory :user do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    username { FFaker::Name.username }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="4">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    email { FFaker::Internet.email }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="5">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    password { &#39;123456&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="6">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    password_confirmation { &#39;123456&#39; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
             
             
 

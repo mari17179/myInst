@@ -646,6 +646,18 @@
           null
         ]
       },
+      "/home/maria/Documents/Inst/inst/spec/factories/users.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
       "/home/maria/Documents/Inst/inst/config/routes.rb": {
         "lines": [
           1,
@@ -702,6 +714,18 @@
           1,
           null,
           1,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
           null,
           1,
           0,
@@ -1020,6 +1044,6 @@
         ]
       }
     },
-    "timestamp": 1594219316
+    "timestamp": 1594316362
   }
 }
