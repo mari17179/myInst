@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order(created_at: :desc).limit(15)
+    @posts = Post.order(created_at: :desc)
   end
 
   def show
@@ -16,19 +16,15 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to @post, notice: "Image uploaded successfully"
+    if @post.image.attached? && @post.save
+      redirect_to @post, notice: "Post uploaded successfully"
     else
-      render :new
+      redirect_to newpost_path
     end
   end
 
   def destroy
    @post = Post.find(params[:id])
-   @comments = @post.comments.where(post_id: @post.id)
-   @comments.each do |comment|
-     comment.destroy
-   end
    @post.destroy
    redirect_to  profile_path(@post.user.username)
   end
