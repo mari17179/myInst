@@ -4,12 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  attr_writer :login
-
   has_many :posts
   has_many :comments
   has_many :likes
-  
+
   has_many :passive_follows, class_name: "Follow",
                              foreign_key: "following_id",
                              dependent: :destroy
@@ -61,11 +59,13 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :email, presence: true
 
-
   has_one_attached :user_photo
+
   after_commit :add_default_user_photo, on: %i[create update]
 
   validate :validate_username
+
+  attr_writer :login
 
   def validate_username
     if User.where(email: username).exists?
