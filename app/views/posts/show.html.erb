@@ -2,7 +2,7 @@
   <div class="col-md-9">
     <div class="card">
       <div class="card-body p-2">
-          <%= image_tag @post.image, class: 'd-block w-100' if @post.image.attached? %>
+          <%= image_tag url_for(@post.image), class: 'd-block w-100' if @post.image.attached? %>
       </div>
     </div>
   </div>

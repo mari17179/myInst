@@ -1,7 +1,7 @@
 <% @followers.each do |f| %>
 <% @user = User.find(f.follower_id) %>
   <p class="border-top mt-2 py-2" style="font-size:1.5vw;">
-    <%= image_tag(@user.user_photo_follow_thumbnail) %>
+    <%= image_tag url_for(@user.user_photo_follow_thumbnail) %>
     <%= link_to @user.username, profile_path(@user.username) %>
     <% if user_signed_in? && current_user != @user %>
       <% if current_user.following?(@user) %>
