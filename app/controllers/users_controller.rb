@@ -13,5 +13,4 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     @followings = Follow.where(follower_id: @user.id)
   end
-
 end

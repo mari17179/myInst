@@ -5,5 +5,4 @@ RSpec.describe Like, type: :model do
 
   it { should belong_to(:user).without_validating_presence }
   it { should belong_to(:post).without_validating_presence }
-
 end

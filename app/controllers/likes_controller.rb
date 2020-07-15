@@ -12,5 +12,4 @@ class LikesController < ApplicationController
     current_user.dislike(@post)
     redirect_to @post
   end
-
 end

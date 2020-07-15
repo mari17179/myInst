@@ -8,14 +8,14 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  has_many :passive_follows, class_name: "Follow",
-                             foreign_key: "following_id",
+  has_many :passive_follows, class_name: 'Follow',
+                             foreign_key: 'following_id',
                              dependent: :destroy
 
   has_many :followers, through: :passive_follows, source: :follower
 
-  has_many :active_follows, class_name: "Follow",
-                            foreign_key: "follower_id",
+  has_many :active_follows, class_name: 'Follow',
+                            foreign_key: 'follower_id',
                             dependent: :destroy
 
   has_many :followings, through: :active_follows, source: :following
@@ -33,27 +33,27 @@ class User < ApplicationRecord
   end
 
   def followersNumber
-    Follow.where(following_id: self.id).count
+    Follow.where(following_id: id).count
   end
 
   def followingNumber
-    Follow.where(follower_id: self.id).count
+    Follow.where(follower_id: id).count
   end
 
   def postsNumber
-    Post.where(user_id: self.id).count
+    Post.where(user_id: id).count
   end
 
   def likes?(post)
-    Like.find_by(user_id: self.id, post_id: post.id)
+    Like.find_by(user_id: id, post_id: post.id)
   end
 
   def like(post)
-    Like.create(user_id: self.id, post_id: post.id)
+    Like.create(user_id: id, post_id: post.id)
   end
 
   def dislike(post)
-    Like.find_by(user_id: self.id, post_id: post.id).destroy
+    Like.find_by(user_id: id, post_id: post.id).destroy
   end
 
   validates :username, presence: true
@@ -68,61 +68,59 @@ class User < ApplicationRecord
   attr_writer :login
 
   def validate_username
-    if User.where(email: username).exists?
-      errors.add(:username, :invalid)
-    end
+    errors.add(:username, :invalid) if User.where(email: username).exists?
   end
 
   def login
-    @login || self.username
+    @login || username
   end
 
   def self.find_for_database_authentication(warden_conditions)
-     conditions = warden_conditions.dup
-     if login = conditions.delete(:login)
-       where(conditions.to_h).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-     elsif conditions.has_key?(:username) || conditions.has_key?(:email)
-       where(conditions.to_h).first
-     end
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value', { value: login.downcase }]).first
+    elsif conditions.has_key?(:username) || conditions.has_key?(:email)
+      where(conditions.to_h).first
+    end
    end
 
-   def user_photo_thumbnail
-     if user_photo.attached?
-        user_photo.variant(resize: "30x30!").processed
-     else
-        '/default_user_photo.jpg'
-     end
-   end
+  def user_photo_thumbnail
+    if user_photo.attached?
+      user_photo.variant(resize: '30x30!').processed
+    else
+      '/default_user_photo.jpg'
+    end
+  end
 
-   def user_photo_follow_thumbnail
-     if user_photo.attached?
-        user_photo.variant(resize: "60x60!").processed
-     else
-        '/default_user_photo.jpg'
-     end
-   end
+  def user_photo_follow_thumbnail
+    if user_photo.attached?
+      user_photo.variant(resize: '60x60!').processed
+    else
+      '/default_user_photo.jpg'
+    end
+  end
 
-   def user_photo_full_thumbnail
-     if user_photo.attached?
-        user_photo.variant(resize: "200x200!").processed
-     else
-        '/default_user_photo.jpg'
-     end
-   end
+  def user_photo_full_thumbnail
+    if user_photo.attached?
+      user_photo.variant(resize: '200x200!').processed
+    else
+      '/default_user_photo.jpg'
+    end
+  end
 
-   private
-   def add_default_user_photo
-      unless user_photo.attached?
-        user_photo.attach(
-          io: File.open(
-            Rails.root.join(
-              'app', 'assets', 'images', 'default_user_photo.jpg'
-            )
-          ),
-          filename: 'default_user_photo.jpg',
-          content_type: 'image/jpg'
-        )
-      end
-   end
+  private
 
+  def add_default_user_photo
+    unless user_photo.attached?
+      user_photo.attach(
+        io: File.open(
+          Rails.root.join(
+            'app', 'assets', 'images', 'default_user_photo.jpg'
+          )
+        ),
+        filename: 'default_user_photo.jpg',
+        content_type: 'image/jpg'
+      )
+    end
+  end
 end

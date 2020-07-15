@@ -26,15 +26,15 @@
           null,
           1,
           1,
+          null,
           1,
+          null,
           null,
           null,
           2,
           null,
           1,
           1,
-          null,
-          null,
           null,
           null,
           null
@@ -821,8 +821,6 @@
           null,
           1,
           47,
-          0,
-          null,
           null,
           null,
           1,
@@ -863,10 +861,10 @@
           null,
           null,
           1,
+          null,
           1,
           42,
           21,
-          null,
           null,
           null,
           null,
@@ -909,13 +907,11 @@
       "/home/maria/Documents/Inst/inst/spec/support/features/sign_in.rb": {
         "lines": [
           1,
-          null,
           1,
           0,
           0,
           0,
           0,
-          null,
           null,
           null
         ]
@@ -958,7 +954,6 @@
           0,
           null,
           null,
-          null,
           1,
           null,
           1,
@@ -989,7 +984,6 @@
           1,
           null,
           1,
-          null,
           1,
           4,
           4,
@@ -1008,7 +1002,6 @@
           1,
           1,
           1,
-          null,
           null,
           null,
           null
@@ -1030,7 +1023,6 @@
           1,
           0,
           0,
-          null,
           null,
           null
         ]
@@ -1068,7 +1060,6 @@
           1,
           1,
           null,
-          null,
           null
         ]
       },
@@ -1083,7 +1074,6 @@
           2,
           null,
           2,
-          null,
           null
         ]
       },
@@ -1133,20 +1123,17 @@
           1,
           null,
           null,
-          null,
           null
         ]
       },
       "/home/maria/Documents/Inst/inst/app/models/follow.rb": {
         "lines": [
           1,
-          null,
           1,
           1,
           null,
           1,
           1,
-          null,
           null
         ]
       },
@@ -1159,7 +1146,6 @@
           null,
           2,
           2,
-          null,
           null
         ]
       },
@@ -1182,7 +1168,6 @@
           2,
           null,
           2,
-          null,
           null
         ]
       },
@@ -1194,7 +1179,6 @@
           1,
           null,
           1,
-          null,
           null
         ]
       },
@@ -1218,7 +1202,6 @@
           null,
           2,
           2,
-          null,
           null
         ]
       },
@@ -1238,11 +1221,10 @@
           1,
           1,
           null,
-          null,
           null
         ]
       }
     },
-    "timestamp": 1594382887
+    "timestamp": 1594799385
   }
 }

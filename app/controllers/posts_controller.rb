@@ -17,16 +17,16 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.image.attached? && @post.save
-      redirect_to @post, notice: "Post uploaded successfully"
+      redirect_to @post, notice: 'Post uploaded successfully'
     else
       redirect_to newpost_path
     end
   end
 
   def destroy
-   @post = Post.find(params[:id])
-   @post.destroy
-   redirect_to  profile_path(@post.user.username)
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to profile_path(@post.user.username)
   end
 
   def likes
@@ -34,10 +34,9 @@ class PostsController < ApplicationController
     @userslikes = Like.where(post_id: @post.id)
   end
 
-
   private
 
   def post_params
-      params.require(:post).permit(:image, :description)
+    params.require(:post).permit(:image, :description)
   end
 end

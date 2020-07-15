@@ -12,5 +12,4 @@ class FollowsController < ApplicationController
     current_user.unfollow(@user)
     redirect_to profile_path(@user.username)
   end
-
 end
